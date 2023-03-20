@@ -1,0 +1,4 @@
+dependencies {
+    // sub project
+    implementation project(':common')
+}

@@ -1,0 +1,6 @@
+rootProject.name = 'blogfinder'
+include 'api'
+include 'modules'
+include 'common'
+include 'connect'
+
