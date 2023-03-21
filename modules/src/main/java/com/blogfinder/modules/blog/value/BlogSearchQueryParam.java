@@ -9,6 +9,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @Builder
-public class BlogRequestDto {
-
+public class BlogSearchQueryParam {
+    private String query;
+    private String sort;
+    private Integer page;
+    private Integer size;
 }

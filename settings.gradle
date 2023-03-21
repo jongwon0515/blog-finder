@@ -3,4 +3,5 @@ include 'api'
 include 'modules'
 include 'common'
 include 'connect'
+include 'test'
 
