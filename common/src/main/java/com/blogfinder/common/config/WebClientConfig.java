@@ -29,10 +29,8 @@ public class WebClientConfig {
 	}
 
 	@Bean
-	@Scope("prototype")
-	public WebClient restCustomClient(WebClient.Builder webClientBuilder) {
-
-		return webClientBuilder.clientConnector(new ReactorClientHttpConnector(httpClient()))
+	public WebClient restCustomClient() {
+		return WebClient.builder().clientConnector(new ReactorClientHttpConnector(httpClient()))
 				.defaultHeaders(httpHeaders -> {
 					httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 					httpHeaders.set("Accept", MediaType.APPLICATION_JSON_VALUE);
@@ -53,10 +51,9 @@ public class WebClientConfig {
 //	}
 
 	@Bean
-	@Scope("prototype")
-	public WebClient formCustomClient(WebClient.Builder webClientBuilder) {
+	public WebClient formCustomClient() {
 
-		return webClientBuilder.clientConnector(new ReactorClientHttpConnector(httpClient()))
+		return WebClient.builder().clientConnector(new ReactorClientHttpConnector(httpClient()))
 				.defaultHeaders(httpHeaders ->
 					httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED)
 				)

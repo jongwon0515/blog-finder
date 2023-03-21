@@ -1,7 +1,14 @@
-bootJar { enabled = false }
-jar { enabled = true }
+apply plugin: 'application'
+mainClassName = 'com.blogfinder.ApiApplication'
 
+bootJar {
+    baseName = 'blog-finder'
+}
 dependencies {
     implementation project(':modules')
     implementation project(':common')
+    implementation project(':connect')
+
+    testImplementation project(':test')
+    testImplementation project(':test').sourceSets.test.output
 }

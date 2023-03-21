@@ -1,0 +1,7 @@
+bootJar { enabled = false }
+jar { enabled = true }
+
+dependencies {
+    testImplementation project(':test')
+    testImplementation project(':test').sourceSets.test.output
+}

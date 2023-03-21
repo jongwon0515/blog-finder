@@ -11,7 +11,7 @@ buildscript {
     }
 }
 
-allprojects {
+subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
@@ -19,6 +19,11 @@ allprojects {
     group = 'com.blogfinder'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '11'
+
+    bootJar {
+        baseName = 'blog-finder'
+        version =  '1.0.0'
+    }
 
     configurations {
         compileOnly {
@@ -33,6 +38,10 @@ allprojects {
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.boot:spring-boot-starter-webflux'
+        implementation ('com.h2database:h2')
+        implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
+        implementation ('org.springframework.boot:spring-boot-starter-aop')
+
         compileOnly 'org.projectlombok:lombok'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -43,4 +52,5 @@ allprojects {
     tasks.named('test') {
         useJUnitPlatform()
     }
+
 }

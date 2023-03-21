@@ -1,4 +1,10 @@
+bootJar { enabled = false }
+jar { enabled = true }
+
 dependencies {
     // sub project
     implementation project(':common')
+
+    testImplementation project(':test')
+    testImplementation project(':test').sourceSets.test.output
 }
