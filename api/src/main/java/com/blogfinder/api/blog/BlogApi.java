@@ -1,7 +1,6 @@
 package com.blogfinder.api.blog;
 
 import com.blogfinder.modules.blog.service.OpenApiFallbackService;
-import com.blogfinder.modules.blog.service.OpenApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

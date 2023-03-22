@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-//@Table(name = "search_keyword")
 public class SearchKeyword {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

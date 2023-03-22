@@ -16,7 +16,7 @@ import static com.blogfinder.modules.blog.type.ApiVendor.NAVER;
 @RequiredArgsConstructor
 public class NaverOpenApiService implements OpenApiService {
     private final RequestClient requestClient;
-    private final String BLOG_SEARCH_PATH = "/v1/search/blog.jsond";
+    private final String BLOG_SEARCH_PATH = "/v1/search/blog.json";
 
     @Override
     public Mono<Map> callBlogSearchApi(HashMap<String, String> queryParam){

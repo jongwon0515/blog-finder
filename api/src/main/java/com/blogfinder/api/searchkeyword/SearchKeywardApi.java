@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SearchKeywardApi {
     private final SearchKeywordService searchKeywordService;
-    @GetMapping("/")
+    @GetMapping("")
     public List<SearchKeywordVo> getPopularSearchKeywords(){
         return searchKeywordService.getPopularSearchKeyword();
     }

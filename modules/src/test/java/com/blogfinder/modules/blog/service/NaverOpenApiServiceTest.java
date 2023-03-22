@@ -14,13 +14,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootTest(classes = MudoulesAppTests.class)
-class KakaoOpenApiServiceTest {
+class NaverOpenApiServiceTest {
     @Autowired
-    private OpenApiService kakaoOpenApiService;
+    private OpenApiService naverOpenApiService;
     ObjectMapper objectMapper = new ObjectMapper();
+
     @Test
-    @DisplayName("카카오 블로그 검색 api 체크")
-    void callBlogSearchApi(){
+    @DisplayName("네이버 블로그 검색 api 체크")
+    void callBlogSearchApi() {
         // Given
         HashMap<String, String> params = new HashMap<>() {{
             put("query", "카뱅");
@@ -30,13 +31,17 @@ class KakaoOpenApiServiceTest {
         }};
 
         // When
-        Mono<Map> resMono = kakaoOpenApiService.callBlogSearchApi(params);
+        Mono<Map> resMono = naverOpenApiService.callBlogSearchApi(params);
 
         // Then
         StepVerifier.create(resMono)
                 .expectNextMatches(response -> {
                     JsonNode actualJson = objectMapper.valueToTree(response);
-                    return actualJson.has("documents") && actualJson.get("documents").isArray();
+                    return actualJson.has("lastBuildDate") &&
+                            actualJson.has("total") &&
+                            actualJson.has("start") &&
+                            actualJson.has("display") &&
+                            actualJson.get("items").isArray();
                 })
                 .expectComplete()
                 .verify();

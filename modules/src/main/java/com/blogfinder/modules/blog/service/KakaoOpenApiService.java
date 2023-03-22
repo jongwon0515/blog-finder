@@ -16,7 +16,7 @@ import static com.blogfinder.modules.blog.type.ApiVendor.KAKAO;
 @RequiredArgsConstructor
 public class KakaoOpenApiService implements OpenApiService {
     private final RequestClient requestClient;
-    private final String BLOG_SEARCH_PATH = "/v2/search/blo";
+    private final String BLOG_SEARCH_PATH = "/v2/search/blog";
 
     @Override
     public Mono<Map> callBlogSearchApi(HashMap<String, String> queryParam){

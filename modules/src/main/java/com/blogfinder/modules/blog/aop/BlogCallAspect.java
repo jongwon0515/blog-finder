@@ -38,16 +38,5 @@ public class BlogCallAspect {
 
         searchKeywordRepository.save(searchKeyword);
     }
-
-//
-//    @AfterReturning(
-//            pointcut = "execution(* com.blogfinder.api.blog.BlogApi.searchBlog(..))",
-//            returning = "result"
-//    )
-//    public Mono<Map> logSearchKeyword(JoinPoint joinPoint, Mono<Map> result){
-//        return result.map(res -> {
-//
-//        });
-//    }
 }
 
