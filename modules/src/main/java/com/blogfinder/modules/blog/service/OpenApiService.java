@@ -1,6 +1,5 @@
 package com.blogfinder.modules.blog.service;
 
-import com.blogfinder.modules.blog.value.BlogSearchQueryParam;
 import reactor.core.publisher.Mono;
 
 import java.util.HashMap;

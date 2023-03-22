@@ -1,5 +1,6 @@
 package com.blogfinder.api.blog;
 
+import com.blogfinder.modules.blog.service.OpenApiFallbackService;
 import com.blogfinder.modules.blog.service.OpenApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,24 +12,22 @@ import reactor.core.publisher.Mono;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("/v1/")
+@RequestMapping("/v1/search")
 @RestController
 @RequiredArgsConstructor
 public class BlogApi {
-    private final OpenApiService kakaoOpenApiService;
-    private final OpenApiService naverOpenApiService;
+    private final OpenApiFallbackService openApiFallbackService;
 
-    @GetMapping("/search/blog")
+    @GetMapping("/blog")
     public Mono<Map> searchBlog(@RequestParam(value = "query", required = true, defaultValue = "") String query,
                                 @RequestParam(value = "sort", required = false, defaultValue = "accuracy") String sort,
                                 @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
                                 @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
-        return naverOpenApiService.callBlogSearchApi(new HashMap<>() {{
+        return openApiFallbackService.callBlogSearchApi(new HashMap<>() {{
             put("query", query);
             put("sort", sort);
             put("page", String.valueOf(page));
             put("size", String.valueOf(size));
         }});
-
     }
 }

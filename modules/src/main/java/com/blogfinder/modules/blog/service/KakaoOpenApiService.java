@@ -2,6 +2,7 @@ package com.blogfinder.modules.blog.service;
 
 import com.blogfinder.connect.RequestClient;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -10,11 +11,12 @@ import java.util.Map;
 
 import static com.blogfinder.modules.blog.type.ApiVendor.KAKAO;
 
+@Order(1)
 @Service
 @RequiredArgsConstructor
 public class KakaoOpenApiService implements OpenApiService {
     private final RequestClient requestClient;
-    private final String BLOG_SEARCH_PATH = "/v2/search/blog";
+    private final String BLOG_SEARCH_PATH = "/v2/search/blo";
 
     @Override
     public Mono<Map> callBlogSearchApi(HashMap<String, String> queryParam){

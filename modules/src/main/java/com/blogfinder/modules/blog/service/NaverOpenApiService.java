@@ -2,6 +2,7 @@ package com.blogfinder.modules.blog.service;
 
 import com.blogfinder.connect.RequestClient;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -10,11 +11,12 @@ import java.util.Map;
 
 import static com.blogfinder.modules.blog.type.ApiVendor.NAVER;
 
+@Order(2)
 @Service
 @RequiredArgsConstructor
 public class NaverOpenApiService implements OpenApiService {
     private final RequestClient requestClient;
-    private final String BLOG_SEARCH_PATH = "/v1/search/blog.json";
+    private final String BLOG_SEARCH_PATH = "/v1/search/blog.jsond";
 
     @Override
     public Mono<Map> callBlogSearchApi(HashMap<String, String> queryParam){
@@ -60,6 +62,4 @@ public class NaverOpenApiService implements OpenApiService {
 
         return sb.toString();
     }
-
-
 }
